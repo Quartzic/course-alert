@@ -1,6 +1,6 @@
 # Course Alert
 
-This Python script allows you to check the availability of seats in a specific course at Clemson University. It continuously checks the enrollment data for the specified course, and sends a push notification when a seat becomes available so that you can register as soon as possible.
+This Python script allows you to check the availability of courses at Clemson University. It continuously checks the enrollment data for the specified courses, and sends a push notification when a seat becomes available in any of them so that you can register as soon as possible.
 
 ## Prerequisites
 
@@ -15,9 +15,11 @@ To use this script, you'll need to have the following:
 
 Before running the script, you need to make the following changes:
 
-* Replace `INSERT_COOKIE_HERE` with the actual authentication cookie from iROAR. You can find this cookie by using your browser's developer tools to inspect a network request to Banner. Please note that this cookie may expire, so you may need to update it from time to time.
+* Replace `YOUR-CLEMSON-COOKIE-HERE` with the actual authentication cookie from iROAR. You can find this cookie by using your browser's developer tools to inspect a network request to Banner. Please note that this cookie may expire, so you may need to update it from time to time.
 
-* Replace `INSERT_DATA_HERE` with the term and course reference number (CRN) for the course you want to monitor; for example, `term=202308&courseReferenceNumber=89433`.
+* Replace `term` with the term number you'd like to monitor; for example, `202308` is Fall 2023. You can find this by inspecting a Banner network request with your browser's developer tools. 
+
+* Replace `courses_to_check` with a list of courses you'd like to monitor, according to the given example. You can find the `crn` on the course's info page. The `title` is included in the available seat notification for your own convenience, but isn't used for any other purpose.
 
 * Set the `PUSHOVER_APP_KEY` and `PUSHOVER_USER_KEY` environment variables with your Pushover API key and User key respectively. You can obtain these keys from your Pushover account.
 
@@ -33,7 +35,7 @@ To run the script, simply execute it from the command line:
 python course-alert.py
 ```
 
-Once started, the script will continuously check the enrollment data for the specified course and send push notifications when seats become available. It will also send notifications in case of errors, or when the script is stopped.
+Once started, the script will continuously check the enrollment data for the specified courses and send push notifications when seats become available. It will also send notifications in case of errors, or when the script is stopped.
 
 ## License
 
